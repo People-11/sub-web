@@ -19,7 +19,7 @@
     "vue": "^3.2.47"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.21.3",
+    //    "@babel/eslint-parser": "^7.21.3",
     "@vue/cli-plugin-babel": "^4.5.19",
     "@vue/cli-plugin-eslint": "^4.5.19",
     "@vue/cli-plugin-pwa": "^4.5.19",
