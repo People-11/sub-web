@@ -339,19 +339,19 @@ export default {
           "firefly-subs.onrender.com": "https://firefly-subs.onrender.com/sub?",
           "firefly-sub.up.railway.app":
             "https://firefly-sub.up.railway.app/sub?",
-          //          "subs-fireflylzh.b4a.run": "https://subs-fireflylzh.b4a.run/sub?",
           "render-sub.firefly-lm.workers.dev":
             "https://render-sub.firefly-lm.workers.dev/sub?",
           "railway-sub.firefly-lm.workers.dev":
             "https://railway-sub.firefly-lm.workers.dev/sub?",
+          "subs-fireflylzh.b4a.run": "https://subs-fireflylzh.b4a.run/sub?",
         },
         backendOptions: [
           { value: "http://localhost:25500/sub?" },
           { value: "https://firefly-subs.onrender.com/sub?" },
           { value: "https://firefly-sub.up.railway.app/sub?" },
-          //          { value: "https://subs-fireflylzh.b4a.run/sub?" },
           { value: "https://render-sub.firefly-lm.workers.dev/sub?" },
           { value: "https://railway-sub.firefly-lm.workers.dev/sub?" },
+          { value: "https://subs-fireflylzh.b4a.run/sub?" },
         ],
         remoteConfig: [
           {
@@ -412,75 +412,72 @@ export default {
                   "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online.ini",
               },
               {
-                label: "ACL4SSR_AdblockPlus 更多去广告",
+                label: "ACL4SSR 更多去广告",
                 value:
                   "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_AdblockPlus.ini",
               },
               {
-                label:
-                  "ACL4SSR_Full_MultiMode 全分组 自动测速、故障转移、负载均衡",
+                label: "ACL4SSR 全分组 自动测速、故障转移、负载均衡",
                 value:
                   "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_MultiMode.ini",
               },
               {
-                label: "ACL4SSR_Full 全分组 重度用户使用",
+                label: "ACL4SSR 全分组 重度用户使用",
                 value:
                   "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full.ini",
               },
               {
-                label:
-                  "ACL4SSR_Full_AdblockPlus 全分组 重度用户使用 更多去广告",
+                label: "ACL4SSR 全分组 重度用户使用 更多去广告",
                 value:
                   "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_AdblockPlus.ini",
               },
               {
-                label: "ACL4SSR_Full_Netflix 全分组 重度用户使用 奈飞全量",
+                label: "ACL4SSR 全分组 重度用户使用 奈飞全量",
                 value:
                   "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_Netflix.ini",
               },
               {
-                label: "ACL4SSR_Full_NoAuto 全分组 无自动测速 重度用户使用",
+                label: "ACL4SSR 全分组 无自动测速 重度用户使用",
                 value:
                   "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Full_NoAuto.ini",
               },
               {
-                label: "ACL4SSR_Mini 精简版",
+                label: "ACL4SSR 精简版",
                 value:
                   "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini.ini",
               },
               {
-                label: "ACL4SSR_Mini_MultiCountry 精简版 带港美日国家",
+                label: "ACL4SSR 精简版 带港美日国家",
                 value:
                   "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_MultiCountry.ini",
               },
               {
-                label: "ACL4SSR_Mini_AdblockPlus 精简版 更多去广告",
+                label: "ACL4SSR 精简版 更多去广告",
                 value:
                   "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_AdblockPlus.ini",
               },
               {
-                label: "ACL4SSR_Mini_Fallback 精简版 带故障转移",
+                label: "ACL4SSR 精简版 带故障转移",
                 value:
                   "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_Fallback.ini",
               },
               {
-                label:
-                  "ACL4SSR_Mini_MultiMode 精简版 自动测速、故障转移、负载均衡",
+                label: "ACL4SSR 精简版 自动测速、故障转移、负载均衡",
                 value:
                   "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_MultiMode.ini",
               },
               {
-                label: "ACL4SSR_Mini_NoAuto 精简版 不带自动测速",
+                label: "ACL4SSR 精简版 不带自动测速",
                 value:
                   "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_Mini_NoAuto.ini",
               },
               {
-                label: "ACL4SSR_NoAuto 无自动测速",
+                label: "ACL4SSR 无自动测速",
                 value:
                   "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_NoAuto.ini",
               },
               {
-                label: "ACL4SSR_NoReject 无广告拦截规则",
+                label: "ACL4SSR 无广告拦截规则",
                 value:
                   "https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/config/ACL4SSR_Online_NoReject.ini",
               },
