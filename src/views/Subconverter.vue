@@ -327,6 +327,7 @@ export default {
           Surfboard: "surfboard",
           "Shadowsocks(SIP002)": "ss",
           "Shadowsocks Android(SIP008)": "sssub",
+          Singbox: "singbox",
           ShadowsocksR: "ssr",
           ShadowsocksD: "ssd",
           V2Ray: "v2ray",
