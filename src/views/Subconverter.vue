@@ -26,7 +26,7 @@
                 </el-select>
               </el-form-item>
               <el-form-item label="远程配置:">
-                <el-select v-model=" form.remoteConfig " style="width: 100%" allow-create filterable placeholder="请选择">
+                <el-select v-model=" form.remoteConfig " style="width: 100%" allow-create filterable placeholder="请选择，或手动输入远程配置地址">
                   <el-option-group v-for=" group  in  options.remoteConfig " :key=" group.label " :label=" group.label ">
                     <el-option v-for="          item           in           group.options          " :key=" item.value "
                       :label=" item.label " :value=" item.value "></el-option>
@@ -34,7 +34,7 @@
                 </el-select>
               </el-form-item>
               <el-form-item label="后端地址:">
-                <el-select v-model=" form.customBackend " style="width: 100%" allow-create filterable placeholder="请选择">
+                <el-select v-model=" form.customBackend " style="width: 100%" allow-create filterable placeholder="请选择，或手动输入，需要在域名后加/sub?">
                   <el-option v-for="(          v, k          ) in           options.customBackend          " :key=" k "
                     :label=" k " :value=" v "></el-option>
                 </el-select>
@@ -185,30 +185,31 @@ export default {
       options: {
         clientTypes: {
           Clash: "clash",
-          Surge3: "surge&ver=3",
           Surge4: "surge&ver=4",
+          Surge3: "surge&ver=3",
           Quantumult: "quan",
           "Quantumult X": "quanx",
           Singbox: "singbox",
           Loon: "loon",
-          Mellow: "mellow",
           Surfboard: "surfboard",
           "Shadowsocks(SIP002)": "ss",
           "Shadowsocks Android(SIP008)": "sssub",
+          Mellow: "mellow",
           ShadowsocksR: "ssr",
           ShadowsocksD: "ssd",
+          Surge2: "surge&ver=2",
           V2Ray: "v2ray",
           Trojan: "trojan",
           "混合订阅（mixed）": "mixed",
           自动判断客户端: "auto",
         },
         customBackend: {
-          "localhost:25500 本地版": "http://localhost:25500/sub?",
-          "firefly-sub.up.railway.app": "https://firefly-sub.up.railway.app/sub?",
-          "subs-fireflylzh.b4a.run": "https://subs-fireflylzh.b4a.run/sub?",
-          "railway-sub.firefly-lm.workers.dev": "https://railway-sub.firefly-lm.workers.dev/sub?",
-          "firefly-subweb.onrender.com": "https://firefly-subweb.onrender.com/sub?",
-          "render-sub.firefly-lm.workers.dev": "https://render-sub.firefly-lm.workers.dev/sub?",
+          "localhost:25500/sub? 本地版": "http://localhost:25500/sub?",
+          "firefly-sub.up.railway.app/sub?": "https://firefly-sub.up.railway.app/sub?",
+          "subs-fireflylzh.b4a.run/sub?": "https://subs-fireflylzh.b4a.run/sub?",
+          "railway-sub.firefly-lm.workers.dev/sub?": "https://railway-sub.firefly-lm.workers.dev/sub?",
+          "firefly-subweb.onrender.com/sub?": "https://firefly-subweb.onrender.com/sub?",
+          "render-sub.firefly-lm.workers.dev/sub?": "https://render-sub.firefly-lm.workers.dev/sub?",
         },
         backendOptions: [
           { value: "http://localhost:25500/sub?" },
