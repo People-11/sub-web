@@ -152,7 +152,7 @@
       <div slot="title">可以从老的订阅信息中解析信息,填入页面中去</div>
       <el-form label-position="left" style="width: 100%">
         <el-form-item prop="uploadConfig">
-          <el-input v-model=" loadConfig " type="textarea" :autosize=" { minRows: 10, maxRows: 20 } " maxlength="5000"
+          <el-input v-model="uploadConfig" type="textarea" :autosize="{ minRows: 15, maxRows: 30 }" maxlength="10000"
             show-word-limit></el-input>
         </el-form-item>
       </el-form>
@@ -188,19 +188,19 @@ export default {
           Surge4: "surge&ver=4",
           Surge3: "surge&ver=3",
           Quantumult: "quan",
-          "Quantumult X": "quanx",
+          QuantumultX: "quanx",
           Singbox: "singbox",
           Loon: "loon",
           Surfboard: "surfboard",
-          "Shadowsocks(SIP002)": "ss",
-          "Shadowsocks Android(SIP008)": "sssub",
+          Shadowsocks(SIP002): "ss",
+          Shadowsocks(SIP008): "sssub",
           Mellow: "mellow",
           ShadowsocksR: "ssr",
           ShadowsocksD: "ssd",
           Surge2: "surge&ver=2",
           V2Ray: "v2ray",
           Trojan: "trojan",
-          "混合订阅（mixed）": "mixed",
+          混合订阅（mixed）: "mixed",
           自动判断客户端: "auto",
         },
         customBackend: {
