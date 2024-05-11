@@ -172,7 +172,7 @@ export default {
       options: {
         clientTypes: {
           Clash: "clash",
-          Surge4: "surge&ver=4",
+          Surge: "surge&ver=4",
           Surge3: "surge&ver=3",
           Quantumult: "quan",
           QuantumultX: "quanx",
