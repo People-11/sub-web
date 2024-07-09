@@ -1,6 +1,9 @@
 name: Update sub-web
 
 on:
+  push:
+    branches:
+      - main
   workflow_dispatch:
 concurrency:
   group: ${{ github.ref }}-${{ github.workflow }}
@@ -23,31 +26,25 @@ jobs:
         with:
           submodules: "true"
           token: ${{env.GIT_TOKEN}}
-      - name: Update sub-web
-        run: |
-          sudo rm -rf sub-web
-          sudo rm -rf pages
-          git clone https://github.com/LM-Firefly/sub-web.git
-      - name: Check sub-web commit
-        id: web
-        run: |
-          cd sub-web
-          echo "ui-ver=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
       - name: Use Node.js 16
         uses: actions/setup-node@v4.0.2
         with:
           node-version: 16
       - name: Get dependencies and build
         run: |
-          cd sub-web
           yarn install
           yarn build
+      - name: Upload
+        uses: actions/upload-artifact@v4.3.3
+        with:
+          name: dist
+          path: dist/
       - name: Clean up
         run: |
           cd $GITHUB_WORKSPACE
-          mkdir temp
-          sudo cp -rf sub-web/dist/* temp/
-          mv temp pages
+          sudo rm -rf pages
+          mkdir pages
+          mv dist/* pages
           sed -i 's/cloudflare_analytics_token/50c2fe99a72d4537884ce5951738ec23/' pages/index.html
           sudo rm -rf sub-web/*
       - name: Update sub-web
@@ -59,6 +56,19 @@ jobs:
           add: "-A"
         env:
           token: ${{env.GIT_TOKEN}}
+      - name: Push to Pages
+        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: actions/github-script@v7.0.1
+        with:
+          github-token: ${{env.GIT_TOKEN}}
+          script: |
+            github.rest.actions.createWorkflowDispatch({
+            owner: context.repo.owner,
+            repo: 'sub-web',
+            workflow_id: 'build.yml',
+            ref: 'main',
+            });
+
 #  build-changelog:
 #    needs: prepare
 #    runs-on: ubuntu-latest
