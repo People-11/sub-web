@@ -1,11 +1,18 @@
 name: Build
 on:
-  workflow_dispatch:
   push:
+    branches:
+      - main
+    paths:
+      - public
+      - src
+      - "!**/pages/**"
+  workflow_dispatch:
 concurrency:
-  group: Github CI
+  group: ${{ github.ref }}-${{ github.workflow }}
   # 自动取消其他运行中的workflow
-  # cancel-in-progress: true
+  cancel-in-progress: true
+
 jobs:
   build:
     name: Build
@@ -13,7 +20,8 @@ jobs:
     strategy:
       matrix:
         node-version: [16.x]
-
+    env:
+      GIT_TOKEN: ${{secrets.REPO_TOKEN}}
     steps:
       - uses: actions/checkout@v4.1.4
       - name: Use Node.js
@@ -33,7 +41,7 @@ jobs:
         if: ${{ github.ref == 'refs/heads/main' }}
         uses: actions/github-script@v7.0.1
         with:
-          github-token: ${{ secrets.REPO_TOKEN }}
+          github-token: ${{env.GIT_TOKEN}}
           script: |
             github.rest.actions.createWorkflowDispatch({
               owner: context.repo.owner,
