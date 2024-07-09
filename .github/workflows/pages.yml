@@ -43,6 +43,7 @@ jobs:
         run: |
           cd $GITHUB_WORKSPACE
           sudo rm -rf pages
+          mkdir pages
           mv dist/* pages
           sed -i 's/cloudflare_analytics_token/50c2fe99a72d4537884ce5951738ec23/' pages/index.html
           sudo rm -rf sub-web/*
