@@ -34,12 +34,16 @@ jobs:
         run: |
           yarn install
           yarn build
+      - name: Upload
+        uses: actions/upload-artifact@v4.3.3
+        with:
+          name: dist
+          path: dist/
       - name: Clean up
         run: |
           cd $GITHUB_WORKSPACE
-          mkdir temp
-          sudo cp -rf sub-web/dist/* temp/
-          mv temp pages
+          sudo rm -rf pages
+          mv dist/* pages
           sed -i 's/cloudflare_analytics_token/50c2fe99a72d4537884ce5951738ec23/' pages/index.html
           sudo rm -rf sub-web/*
       - name: Update sub-web
