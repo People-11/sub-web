@@ -4,10 +4,7 @@
         <el-col>
             <el-card>
                 <div slot="header">
-                    Firefly-SubConverter
-                    <svg-icon icon-class="github" style="margin-left: 20px" @click="goToProject" />
-                    <svg-icon icon-class="telegram" style="margin-left: 20px" @click="gotoTgChannel" />
-                    <svg-icon icon-class="clash" style="margin-left: 20px" @click="gotoGayhubRuleset" />
+                SubConverter
                     <div style="font-style: normal; font-size: 80%; text-align: right; margin-top: 5px;">
                         {{ backendVersion }}
                     </div>
@@ -157,10 +154,6 @@
 </template>
 
 <script>
-const project = process.env.VUE_APP_PROJECT;
-const remoteConfigSample = process.env.VUE_APP_SUBCONVERTER_REMOTE_CONFIG;
-const gayhubRelease = process.env.VUE_APP_BACKEND_RELEASE;
-const gayhubRuleset = process.env.VUE_APP_RULESET_LINK;
 const defaultBackend =
     process.env.VUE_APP_SUBCONVERTER_DEFAULT_BACKEND + "/sub?";
 const tgBotLink = process.env.VUE_APP_BOT_LINK;
@@ -193,58 +186,18 @@ export default {
                     自动判断客户端: "auto",
                 },
                 customBackend: {
+                    "People11": "https://sub.people11.dev/sub?",
                     "localhost:25500/sub? 本地版": "http://localhost:25500/sub?",
-                    "sub.koyeb.app/sub?": "https://sub.koyeb.app/sub?",
-                    "firefly-sub.up.railway.app/sub?": "https://firefly-sub.up.railway.app/sub?",
-                    "sub.firefly-lm.workers.dev/sub?": "https://sub.firefly-lm.workers.dev/sub?",
-                    "railway-sub.firefly-lm.workers.dev/sub?": "https://railway-sub.firefly-lm.workers.dev/sub?",
-                    "subs-fireflylzh.b4a.run/sub?": "https://subs-fireflylzh.b4a.run/sub?",
                 },
-                backendOptions: [
-                    { value: "http://localhost:25500/sub?" },
-                    { value: "https://sub.koyeb.app/sub?" },
-                    { value: "https://firefly-sub.up.railway.app/sub?" },
-                    { value: "https://sub.firefly-lm.workers.dev/sub?" },
-                    { value: "https://railway-sub.firefly-lm.workers.dev/sub?" },
-                    { value: "https://subs-fireflylzh.b4a.run/sub?" },
-                ],
                 remoteConfig: [{
                         label: "默认",
                         options: [{ label: "不选，由接口提供方提供", value: "" }],
                     },
                     {
-                        label: "LM-Firefly (Online, 与Github 同步)",
+                        label: "自用",
                         options: [{
-                                label: "MultiSub-NoReject",
-                                value: "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Subconverter-base/MultiSub-NoReject.toml",
-                            },
-                            {
-                                label: "AllSub-NoReject",
-                                value: "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Subconverter-base/AllSub-NoReject.toml",
-                            },
-                            {
-                                label: "MultiSub-AdBlock",
-                                value: "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Subconverter-base/MultiSub-AdBlock.toml",
-                            },
-                            {
-                                label: "AllSub-AdBlock",
-                                value: "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Subconverter-base/AllSub-AdBlock.toml",
-                            },
-                            {
-                                label: "AIO",
-                                value: "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Subconverter-base/AIO.toml",
-                            },
-                            {
-                                label: "AIO-NoReject",
-                                value: "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Subconverter-base/AIO-NoReject.toml",
-                            },
-                            {
-                                label: "CordCloud",
-                                value: "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Subconverter-base/CordCloud.toml",
-                            },
-                            {
-                                label: "CordCloud-NoReject",
-                                value: "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Subconverter-base/CordCloud-NoReject.toml",
+                                label: "Mixed",
+                                value: "https://gist.githubusercontent.com/People-11/4abfa476c6e63918aeecd62c9a206f47/raw/Mixed.ini",
                             },
                         ],
                     },
@@ -332,7 +285,7 @@ export default {
                 classic: false, // 是否使用 Clash Classic Rule Provider
                 clientType: "",
                 customBackend: "",
-                emoji: true,
+                emoji: false,
                 excludeRemarks: "",
                 expand: true, // 是否展开规则
                 extraset: false,
@@ -350,7 +303,7 @@ export default {
                 sort: false,
                 sourceSubUrl: "",
                 tfo: false,
-                udp: false,
+                udp: true,
                 xudp: false,
                 tpl: {
                     singbox: {
@@ -363,7 +316,6 @@ export default {
             loadConfig: "",
             dialogLoadConfigVisible: false,
             myBot: tgBotLink,
-            sampleConfig: remoteConfigSample,
         };
         // window.console.log(data.options.remoteConfig);
         // window.console.log(data.options.customBackend);
@@ -387,7 +339,6 @@ export default {
     },
     created() {
         // document.title = "Subscription Converter";
-        document.title = "Firefly-SubConverter";
         this.isPC = this.$getOS().isPc;
         // 获取 url cache
         if (process.env.VUE_APP_USE_STORAGE === "true") {
@@ -397,27 +348,12 @@ export default {
     mounted() {
         this.form.clientType = "clash";
         this.form.customBackend = defaultBackend;
-        this.form.remoteConfig = "https://raw.githubusercontent.com/LM-Firefly/Rules/master/Subconverter-base/AllSub-NoReject.toml";
+        this.form.remoteConfig = "https://gist.githubusercontent.com/People-11/4abfa476c6e63918aeecd62c9a206f47/raw/Mixed.ini";
         this.getBackendVersion();
     },
     methods: {
         onCopy() {
             this.$message.success("Copied!");
-        },
-        goToProject() {
-            window.open(project);
-        },
-        gotoTgChannel() {
-            window.open(tgBotLink);
-        },
-        gotoGayhub() {
-            window.open(gayhubRelease);
-        },
-        gotoGayhubRuleset() {
-            window.open(gayhubRuleset);
-        },
-        gotoRemoteConfig() {
-            window.open(remoteConfigSample);
         },
         clashInstall() {
             if (this.customSubUrl === "") {
@@ -479,13 +415,15 @@ export default {
                 "target=" +
                 this.form.clientType +
                 "&url=" +
-                encodeURIComponent(sourceSub) +
-                "&insert=" +
-                this.form.insert;
+                encodeURIComponent(sourceSub);
             if (config) {
                 this.customSubUrl += "&config=" + encodeURIComponent(config);
             }
             if (this.advanced === "2") {
+                if (this.form.insert) {
+                    this.customSubUrl +=
+                        "&insert=" + this.form.insert;
+                }
                 if (this.form.excludeRemarks) {
                     this.customSubUrl +=
                         "&exclude=" + encodeURIComponent(this.form.excludeRemarks);
@@ -673,14 +611,6 @@ export default {
             );
             data.append("newname", encodeURIComponent(this.form.new_name.toString()));
             return data;
-        },
-        backendSearch(queryString, cb) {
-            let backends = this.options.backendOptions;
-            let results = queryString ?
-                backends.filter(this.createFilter(queryString)) :
-                backends;
-            // 调用 callback 返回建议列表的数据
-            cb(results);
         },
         createFilter(queryString) {
             return (candidate) => {
